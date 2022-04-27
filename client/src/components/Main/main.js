@@ -73,7 +73,7 @@ const Main = () => {
   
 
   return ( 
-    <div style={{marginTop:'4em'}} className="container-fluid">
+    <div style={{marginTop:'80px'}} className="container-fluid main">
       <h2 style={{textAlign:'center'}}className="card-title">Frontpage</h2>
       <div className="row" style={style.postList}>
         <div className="col-8">

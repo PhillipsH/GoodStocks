@@ -6,8 +6,13 @@ import UserContext from '../../context/userContext';
 
 const style = {
   Buttons: {
-    marginRight: '20px'
-  }
+    marginRight: '50px'
+  },
+  Title:{
+    fontSize: '1em',
+    fontWeight:'600',
+    marginLeft:'40px'
+  },
 }
 
 const Header = () => {
@@ -22,8 +27,8 @@ const Header = () => {
   }
   
   return (
-    <Navbar fixed="top" bg="light" className="row">
-      <Navbar.Brand className="col" href="/">GoodStonks</Navbar.Brand>
+    <Navbar fixed="top" bg="light" className="row topbar" style={style.Topbar}>
+      <Navbar.Brand className="col" href="/" style={style.Title}>GoodStocks</Navbar.Brand>
       {
         userInfo.loggedIn 
         ?(
@@ -33,9 +38,9 @@ const Header = () => {
           </Nav>
         )
         :(
-          <Nav className="ml-auto">
+          <Nav className="ml-auto" style={style.Buttons}>
             <a className="btn btn-primary mr-2" href="/login">Login</a>
-            <a className="btn btn-warning mr-2" href="/register">Register</a>
+            <a className="btn btn-primary mr-2" href="/register">Register</a>
           </Nav>
         )
       }

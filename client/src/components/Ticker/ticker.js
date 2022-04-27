@@ -4,7 +4,6 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 
 import AllPosts from '../Posts/AllPosts'
 import Comments from '../Comments/Comments'
-import Ooga from '../Comments/Ooga'
 import HotStocksList from '../HotStocksList/hotStocksList';
 import PostEdit from '../PostEdit/postEdit';
 
@@ -17,7 +16,7 @@ const style = {
   TickerHeader: {
     width:'100%',
     height:'150px',
-    margin:'0px'
+    marginTop:'100px'
   },
   cardBody: {
     width: '50%',
@@ -78,7 +77,7 @@ const Ticker = () => {
   : <> </>
   
   return ( 
-    <div style={{marginTop:'4em'}} className="container-fluid">
+    <div style={style.TickerHeader} className="container-fluid">
       <h2 style={{textAlign:'center'}}>{currentTicker.toUpperCase()}: <span className="text-success">{value}</span></h2> 
       <div className="row">
         <div className="col-8">

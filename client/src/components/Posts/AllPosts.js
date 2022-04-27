@@ -16,6 +16,7 @@ const AllPosts = (props) => {
     })
   };
   const fetchTickerPosts = (currentTicker) => {
+    console.log(currentTicker)
     fetch('http://localhost:5000/ticker/' + currentTicker)
     .then(response => response.json())
     .then(json => {
@@ -24,13 +25,7 @@ const AllPosts = (props) => {
       setPosts({data:json})
     })
   };
-  // fetchAllPosts()
-  // if(props.ticker == undefined){
-  //   fetchAllPosts()
-  // }else{
-  //   fetchTickerPosts(props.ticker)
-  // }
-
+  
   useEffect(() => {
     if(props.ticker == undefined){
       fetchAllPosts()
@@ -41,8 +36,6 @@ const AllPosts = (props) => {
 
   return(
     <>
-      <div>
-      </div>
       {posts.data.map((val, key) => 
         <Post 
           key={key} 
@@ -52,6 +45,7 @@ const AllPosts = (props) => {
           postBody={val.post_text} 
           date={val.post_date} 
           commentCount={val.comment_count}
+          ticker={val.ticker}
           />
         )}
     </>

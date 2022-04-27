@@ -3,11 +3,11 @@ let tickerData = require('../models/tickerData')
 const fetch = require("node-fetch");
 const axios = require("axios");
 
-//Function adds user to database then redirects user to the main page.
 exports.tickerGetPosts = async (req, res) => {
     try {
-        // console.log("ticker ran")
-        posts = await tickerData.getPosts(req.params.id)
+        console.log("ticker ran")
+        console.log(req.params.tickerId)
+        posts = await tickerData.getPosts(req.params.tickerId)
         console.log(posts.rows)
         if(posts) {
             res.send(posts.rows)
@@ -17,29 +17,7 @@ exports.tickerGetPosts = async (req, res) => {
         throw error;
     }
 }
-// exports.tickerGetAllPosts = async (req, res) => {
-//     try {
-//         let posts = await tickerData.getAllPosts()
-//         let comments = []
-//         // console.log(posts.rows)
-//         if(posts.rows.length > 0) {
-//             for(postIndex in posts.rows){
-//                 posts.rows[postIndex].commentsCount = tickerData.getCommentsCount(posts.rows[postIndex].post_id)
-//                 comments.push(posts.rows[postIndex].commentsCount)
-//             }
-//             Promise.all(comments).then((values) => {
-//                 console.log(posts.rows[0].commentsCount)
-//                 // for(postIndex in posts.rows){
-//                 //     posts.rows[postIndex].commentsCount = posts.rows[postIndex].commentsCount.result
-//                 // }
-//                 res.send(posts.rows)
-//             });
-//         }
-            
-//     } catch (error) {
-//         throw error;
-//     }
-// }
+
 exports.tickerGetAllPosts = async (req, res) => {
     try {
         posts = await tickerData.getAllPosts()
@@ -72,7 +50,6 @@ exports.tickerGetPost= async (req, res) => {
 
 exports.tickerCreatePost = async (req, res) => {
     try {
-
         console.log(req.body)
         if(req.body.username == undefined||
             req.body.postTitle == undefined||
