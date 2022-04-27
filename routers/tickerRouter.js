@@ -3,13 +3,13 @@ const express = require('express');
 const router = express.Router();
 const tickerController = require('../controllers/tickerController')
 
-router.get('/getAllPosts', tickerController.tickerGetAllPosts)
-router.get('/getPost/:id', tickerController.tickerGetPost)
-router.get('/ticker/:tickerId', tickerController.tickerGetPosts)
-router.post('/ticker/createPost', tickerController.tickerCreatePost)
-router.post('/ticker/createComment', tickerController.tickerCreateComment)
+router.get('/api/getAllPosts', tickerController.tickerGetAllPosts)
+router.get('/api/getPost/:id', tickerController.tickerGetPost)
+router.get('/api/ticker/:tickerId', tickerController.tickerGetPosts)
+router.post('/api/ticker/createPost', tickerController.tickerCreatePost)
+router.post('/api/ticker/createComment', tickerController.tickerCreateComment)
 
-router.get('/value/:id', tickerController.getValue)
+router.get('/api/value/:id', tickerController.getValue)
 
 
 module.exports = router;

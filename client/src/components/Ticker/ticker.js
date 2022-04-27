@@ -35,7 +35,7 @@ const Ticker = () => {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const currentTicker = (window.location.pathname.split("/")[2])
   const getValue = (currentTicker) => {
-    fetch('http://localhost:5000/value/' + currentTicker)
+    fetch('/api/value/' + currentTicker)
     .then(response => response.json())
     .then(val => {
       if(val.error){

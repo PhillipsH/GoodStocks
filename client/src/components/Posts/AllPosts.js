@@ -6,7 +6,7 @@ const AllPosts = (props) => {
     data: []
   });
   const fetchAllPosts = () => {
-    fetch('http://localhost:5000/getAllPosts')
+    fetch('/api/getAllPosts')
     .then(response => response.json())
     .then(json => {
       json.forEach(post => post.post_date = post.post_date.split("T")[0])
@@ -17,7 +17,7 @@ const AllPosts = (props) => {
   };
   const fetchTickerPosts = (currentTicker) => {
     console.log(currentTicker)
-    fetch('http://localhost:5000/ticker/' + currentTicker)
+    fetch('/api/ticker/' + currentTicker)
     .then(response => response.json())
     .then(json => {
       json.forEach(post => post.post_date = post.post_date.split("T")[0])

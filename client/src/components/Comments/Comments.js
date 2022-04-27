@@ -25,7 +25,7 @@ const Comments = (props) => {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const post_id = (window.location.pathname.split("/")[4])
   const fetchComments = () => {
-    fetch('http://localhost:5000/getPost/' + post_id)
+    fetch('/api/getPost/' + post_id)
     .then(response => response.json())
     .then(json => {
       // json.forEach(post => post.post_date = post.post_date.split("T")[0])
