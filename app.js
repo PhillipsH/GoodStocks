@@ -18,9 +18,17 @@ app.use(express.urlencoded({
 //   res.json({message: "this was sent from the server"});
 // });
 
-// app.get('/*', (req, res) => {
-//   res.sendFile(path.join(__dirname+'/client/build/index.html'))
-// });
+let loginRouter = require('./routers/loginRouter');
+let homeRouter = require('./routers/homeRouter');
+let tickerRouter = require('./routers/tickerRouter');
+
+app.use(loginRouter);
+app.use(homeRouter);
+app.use(tickerRouter);
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'))
+});
 
 app.use(
   session({
@@ -39,13 +47,7 @@ app.use(
 
 const port = process.env.PORT || 5000;
 
-let loginRouter = require('./routers/loginRouter');
-let homeRouter = require('./routers/homeRouter');
-let tickerRouter = require('./routers/tickerRouter');
 
-app.use(loginRouter);
-app.use(homeRouter);
-app.use(tickerRouter);
 
 
 app.listen(port);
