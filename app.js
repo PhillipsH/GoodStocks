@@ -5,6 +5,21 @@ const session = require('express-session');
 
 var app = express();
 
+app.use(
+  session({
+    secret: 'secret',
+    name: 'session_data',
+    resave: true,
+    saveUninitialized: false,
+    rolling: true,
+    cookie: {
+      httpOnly: true,
+      // maxAge: 600000 //10 minutes
+      maxAge: 365 * 24 * 60 * 60 * 1000, // one year
+    },
+  }),
+);
+
 app.use(express.static(path.join(__dirname, 'client/build')));
 app.use(cors());
 
@@ -30,20 +45,6 @@ app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname+'/client/build/index.html'))
 });
 
-app.use(
-  session({
-    secret: 'secret',
-    name: 'session_data',
-    resave: true,
-    saveUninitialized: false,
-    rolling: true,
-    cookie: {
-      httpOnly: true,
-      // maxAge: 600000 //10 minutes
-      maxAge: 365 * 24 * 60 * 60 * 1000, // one year
-    },
-  }),
-);
 
 const port = process.env.PORT || 5000;
 
