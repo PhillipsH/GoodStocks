@@ -6,7 +6,16 @@ const AllPosts = (props) => {
     data: []
   });
   const fetchAllPosts = () => {
-    fetch('/api/getAllPosts')
+    fetch('/api/getAllPosts', {
+      method: 'GET',
+      // mode: 'cors',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          // 'Access-Control-Allow-Origin': url,
+      },
+      
+    })
     .then(response => response.json())
     .then(json => {
       json.forEach(post => post.post_date = post.post_date.split("T")[0])
@@ -17,7 +26,16 @@ const AllPosts = (props) => {
   };
   const fetchTickerPosts = (currentTicker) => {
     console.log(currentTicker)
-    fetch('/api/ticker/' + currentTicker)
+    
+    fetch('/api/ticker/' + currentTicker, {
+      method: 'GET',
+      // mode: 'cors',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          // 'Access-Control-Allow-Origin': url,
+      },
+    })
     .then(response => response.json())
     .then(json => {
       json.forEach(post => post.post_date = post.post_date.split("T")[0])
